@@ -1,0 +1,25 @@
+PWM csatik:
+	TIM1 - CH1 - PA8
+	TIM1 - CH2 - PA9
+	TIM1 - CH3 - PA10
+	TIM1 - CH4 - PA11
+	=
+	TIM2 - CH2 - PA1
+	TIM2 - CH3 - PA2
+	TIM2 - CH4 - PA3
+	=
+	TIM3 - CH1 - PA6
+	TIM3 - CH2 - PA7	
+	TIM3 - CH3 - PB0
+	TIM3 - CH4 - PB1
+Input:
+	PB11 - btn0
+	PB10 - btn1
+LCD:
+	PB7 - RS
+	PB6- E
+	PB15- DATA4
+	PB14 - DATA5
+	PB13- DATA6
+	PB12- DATA7
+	
