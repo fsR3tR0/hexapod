@@ -190,13 +190,13 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if(htim -> Instance == TIM4){
-		if(HAL_GPIO_ReadPin(btn0_GPIO_Port, btn0_Pin) == 1){
-			htim3.Instance -> CCR3 = 125;
-		}else if(HAL_GPIO_ReadPin(btn1_GPIO_Port, btn1_Pin) == 1){
-			htim3.Instance -> CCR3 = 75;
-		}else{
+		if(HAL_GPIO_ReadPin(btn0_GPIO_Port, btn0_Pin) == 1 && htim3.Instance -> CCR3 < 125){
+			htim3.Instance -> CCR3 += 5;
+		}else if(HAL_GPIO_ReadPin(btn1_GPIO_Port, btn1_Pin) == 1 && htim3.Instance -> CCR3 > 25){
+			htim3.Instance -> CCR3 -= 5;
+		}/*else{
 			htim3.Instance -> CCR3 = 25;
-		}
+		}*/
 	}
 }
 /* USER CODE END 4 */
