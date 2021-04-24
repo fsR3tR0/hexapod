@@ -24,7 +24,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "main.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,7 +44,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+v8 i = 50;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -55,11 +55,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void poz_0(void);
-void poz_45(void);
-void poz_90(void);
-void poz_135(void);
-void poz_180(void);
+
 /* USER CODE END 0 */
 
 /**
@@ -104,9 +100,18 @@ int main(void)
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
+  HAL_TIM_Base_Start_IT(&htim2);
 
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
+
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3);
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -137,6 +142,19 @@ int main(void)
 		  HAL_Delay(500);
 		  htim3.Instance -> CCR2 = i;
 		  HAL_Delay(500);
+		  htim3.Instance -> CCR3 = i;
+		  HAL_Delay(500);
+		  htim3.Instance -> CCR4 = i;
+		  HAL_Delay(500);
+		  htim4.Instance -> CCR1 = i;
+		  HAL_Delay(500);
+		  htim4.Instance -> CCR2 = i;
+		  HAL_Delay(500);
+		  htim4.Instance -> CCR3 = i;
+		  HAL_Delay(500);
+		  htim4.Instance -> CCR4 = i;
+		  HAL_Delay(500);
+
 	  }
 
 	  HAL_GPIO_TogglePin(led_panel_GPIO_Port, led_panel_Pin);
@@ -183,81 +201,16 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void poz_0(){
-	htim1.Instance -> CCR1 = 25;
-	htim1.Instance -> CCR2 = 25;
-	htim1.Instance -> CCR3 = 25;
-	htim1.Instance -> CCR4 = 25;
-
-	htim2.Instance -> CCR1 = 25;
-	htim2.Instance -> CCR2 = 25;
-	htim2.Instance -> CCR3 = 25;
-	htim2.Instance -> CCR4 = 25;
-
-	htim3.Instance -> CCR1 = 25;
-	htim3.Instance -> CCR2 = 25;
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	if(htim -> Instance == TIM2){
+		if(i == 0){
+			HAL_GPIO_TogglePin(led_panel_GPIO_Port, led_panel_Pin);
+			i = 50;
+		}else{
+			i--;
+		}
+	}
 }
-
-void poz_45(){
-	htim1.Instance -> CCR1 = 50;
-	htim1.Instance -> CCR2 = 50;
-	htim1.Instance -> CCR3 = 50;
-	htim1.Instance -> CCR4 = 50;
-
-	htim2.Instance -> CCR1 = 50;
-	htim2.Instance -> CCR2 = 50;
-	htim2.Instance -> CCR3 = 50;
-	htim2.Instance -> CCR4 = 50;
-
-	htim3.Instance -> CCR1 = 50;
-	htim3.Instance -> CCR2 = 50;
-}
-
-void poz_90(){
-	htim1.Instance -> CCR1 = 75;
-	htim1.Instance -> CCR2 = 75;
-	htim1.Instance -> CCR3 = 75;
-	htim1.Instance -> CCR4 = 75;
-
-	htim2.Instance -> CCR1 = 75;
-	htim2.Instance -> CCR2 = 75;
-	htim2.Instance -> CCR3 = 75;
-	htim2.Instance -> CCR4 = 75;
-
-	htim3.Instance -> CCR1 = 75;
-	htim3.Instance -> CCR2 = 75;
-}
-
-void poz_135(){
-	htim1.Instance -> CCR1 = 100;
-	htim1.Instance -> CCR2 = 100;
-	htim1.Instance -> CCR3 = 100;
-	htim1.Instance -> CCR4 = 100;
-
-	htim2.Instance -> CCR1 = 100;
-	htim2.Instance -> CCR2 = 100;
-	htim2.Instance -> CCR3 = 100;
-	htim2.Instance -> CCR4 = 100;
-
-	htim3.Instance -> CCR1 = 100;
-	htim3.Instance -> CCR2 = 100;
-}
-
-void poz_180(){
-	htim1.Instance -> CCR1 = 125;
-	htim1.Instance -> CCR2 = 125;
-	htim1.Instance -> CCR3 = 125;
-	htim1.Instance -> CCR4 = 125;
-
-	htim2.Instance -> CCR1 = 125;
-	htim2.Instance -> CCR2 = 125;
-	htim2.Instance -> CCR3 = 125;
-	htim2.Instance -> CCR4 = 125;
-
-	htim3.Instance -> CCR1 = 125;
-	htim3.Instance -> CCR2 = 125;
-}
-
 /* USER CODE END 4 */
 
 /**

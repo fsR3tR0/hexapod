@@ -1,8 +1,4 @@
-main.c:69:5:main	16	static
-main.c:152:6:SystemClock_Config	72	static
-main.c:186:6:poz_0	4	static
-main.c:201:6:poz_45	4	static
-main.c:216:6:poz_90	4	static
-main.c:231:6:poz_135	4	static
-main.c:246:6:poz_180	4	static
-main.c:267:6:Error_Handler	4	static,ignoring_inline_asm
+main.c:65:5:main	16	static
+main.c:170:6:SystemClock_Config	72	static
+main.c:204:6:HAL_TIM_PeriodElapsedCallback	16	static
+main.c:220:6:Error_Handler	4	static,ignoring_inline_asm

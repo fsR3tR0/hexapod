@@ -1,0 +1,5 @@
+servo.c:10:6:poz_0	4	static
+servo.c:25:6:poz_45	4	static
+servo.c:40:6:poz_90	4	static
+servo.c:55:6:poz_135	4	static
+servo.c:70:6:poz_180	4	static

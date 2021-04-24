@@ -32,6 +32,9 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "tim.h"
+#include "gpio.h"
+
 #include <stdbool.h>
 #include <math.h>
 #include <inttypes.h>
