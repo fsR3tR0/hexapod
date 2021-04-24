@@ -56,7 +56,9 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void poz_0(void);
+void poz_45(void);
 void poz_90(void);
+void poz_135(void);
 void poz_180(void);
 /* USER CODE END 0 */
 
@@ -114,7 +116,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  for(u8 i = 25; i <= 125; i += 50){
+	  for(u8 i = 25; i <= 125; i += 25){
 		  htim1.Instance -> CCR1 = i;
 		  HAL_Delay(500);
 		  htim1.Instance -> CCR2 = i;
@@ -134,7 +136,7 @@ int main(void)
 		  htim3.Instance -> CCR1 = i;
 		  HAL_Delay(500);
 		  htim3.Instance -> CCR2 = i;
-
+		  HAL_Delay(500);
 	  }
 
 	  HAL_GPIO_TogglePin(led_panel_GPIO_Port, led_panel_Pin);
@@ -196,6 +198,21 @@ void poz_0(){
 	htim3.Instance -> CCR2 = 25;
 }
 
+void poz_45(){
+	htim1.Instance -> CCR1 = 50;
+	htim1.Instance -> CCR2 = 50;
+	htim1.Instance -> CCR3 = 50;
+	htim1.Instance -> CCR4 = 50;
+
+	htim2.Instance -> CCR1 = 50;
+	htim2.Instance -> CCR2 = 50;
+	htim2.Instance -> CCR3 = 50;
+	htim2.Instance -> CCR4 = 50;
+
+	htim3.Instance -> CCR1 = 50;
+	htim3.Instance -> CCR2 = 50;
+}
+
 void poz_90(){
 	htim1.Instance -> CCR1 = 75;
 	htim1.Instance -> CCR2 = 75;
@@ -209,6 +226,21 @@ void poz_90(){
 
 	htim3.Instance -> CCR1 = 75;
 	htim3.Instance -> CCR2 = 75;
+}
+
+void poz_135(){
+	htim1.Instance -> CCR1 = 100;
+	htim1.Instance -> CCR2 = 100;
+	htim1.Instance -> CCR3 = 100;
+	htim1.Instance -> CCR4 = 100;
+
+	htim2.Instance -> CCR1 = 100;
+	htim2.Instance -> CCR2 = 100;
+	htim2.Instance -> CCR3 = 100;
+	htim2.Instance -> CCR4 = 100;
+
+	htim3.Instance -> CCR1 = 100;
+	htim3.Instance -> CCR2 = 100;
 }
 
 void poz_180(){
