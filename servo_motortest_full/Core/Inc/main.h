@@ -71,6 +71,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define led_panel_Pin GPIO_PIN_13
 #define led_panel_GPIO_Port GPIOC
+#define buzzer_Pin GPIO_PIN_9
+#define buzzer_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

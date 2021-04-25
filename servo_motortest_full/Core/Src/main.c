@@ -21,7 +21,6 @@
 #include "main.h"
 #include "tim.h"
 #include "gpio.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "main.h"
@@ -45,6 +44,7 @@
 
 /* USER CODE BEGIN PV */
 v8 i = 50;
+v8 k = 100;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -106,6 +106,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
+  HAL_TIM_Base_Start_IT(&htim3);
 
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
@@ -150,11 +151,6 @@ int main(void)
 		  HAL_Delay(500);
 		  htim4.Instance -> CCR2 = i;
 		  HAL_Delay(500);
-		  htim4.Instance -> CCR3 = i;
-		  HAL_Delay(500);
-		  htim4.Instance -> CCR4 = i;
-		  HAL_Delay(500);
-
 	  }
 
 	  HAL_GPIO_TogglePin(led_panel_GPIO_Port, led_panel_Pin);
@@ -208,6 +204,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 			i = 50;
 		}else{
 			i--;
+		}
+	}else if(htim -> Instance == TIM3){
+		if(k == 0){
+			HAL_GPIO_TogglePin(buzzer_GPIO_Port, buzzer_Pin);
+			k = 100;
+		}else{
+			k--;
 		}
 	}
 }
