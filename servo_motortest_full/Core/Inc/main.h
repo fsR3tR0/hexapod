@@ -43,6 +43,7 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 typedef unsigned char uch;
+
 typedef uint8_t u8;
 typedef uint16_t u16;
 typedef uint32_t u32;
@@ -71,8 +72,24 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define led_panel_Pin GPIO_PIN_13
 #define led_panel_GPIO_Port GPIOC
-#define buzzer_Pin GPIO_PIN_9
-#define buzzer_GPIO_Port GPIOB
+#define btn0_Pin GPIO_PIN_2
+#define btn0_GPIO_Port GPIOB
+#define LCD_RS_Pin GPIO_PIN_10
+#define LCD_RS_GPIO_Port GPIOB
+#define LCD_E_Pin GPIO_PIN_11
+#define LCD_E_GPIO_Port GPIOB
+#define LCD_DATA_4_Pin GPIO_PIN_12
+#define LCD_DATA_4_GPIO_Port GPIOB
+#define LCD_DATA_5_Pin GPIO_PIN_13
+#define LCD_DATA_5_GPIO_Port GPIOB
+#define LCD_DATA_6_Pin GPIO_PIN_14
+#define LCD_DATA_6_GPIO_Port GPIOB
+#define LCD_DATA_7_Pin GPIO_PIN_15
+#define LCD_DATA_7_GPIO_Port GPIOB
+#define btn1_Pin GPIO_PIN_4
+#define btn1_GPIO_Port GPIOB
+#define btn2_Pin GPIO_PIN_5
+#define btn2_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
